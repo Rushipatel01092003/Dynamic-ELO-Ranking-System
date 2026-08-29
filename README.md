@@ -1,26 +1,130 @@
-# Dynamic ELO-Based Ranking System
+# Dynamic ELO-Based Ranking System for Badminton Players
+
+A data-driven ranking system that models player strength dynamically using historical badminton match data and ELO-based rating updates.
 
 ## Overview
 
-This project implements a Dynamic ELO-based ranking system for 687 badminton players using historical match data. The system models changes in player performance over time by updating ratings after matches and uses machine learning techniques to analyze ranking and match-performance patterns.
+Traditional ranking systems often rely on accumulated points or fixed evaluation windows, which may not fully capture changes in a player's competitive strength over time. This project implements a Dynamic ELO-based ranking framework that updates player ratings sequentially as new match results become available.
+
+The system processes historical badminton match data across multiple disciplines and constructs evolving player ratings based on competitive outcomes. The resulting framework can be used to analyze changes in player strength, compare competitors, and support downstream match prediction and performance analysis.
 
 ## Key Features
 
-* Dynamic ELO rating system for player ranking
-* Historical match-data analysis
-* Ranking of 687 badminton players
-* Time-aware performance modeling
-* Machine learning-based analysis
+* Dynamic ELO rating updates based on historical match outcomes
+* Sequential, time-aware processing of match data
+* Player ranking across historical badminton competitions
+* Support for multiple badminton disciplines
+* Feature engineering for player-performance analysis
+* Machine learning-based modeling using XGBoost
+* Time-aware evaluation to reduce information leakage
 
-## Project Workflow
+## Dataset
 
-1. Load and preprocess historical match data
-2. Construct player ratings using the Dynamic ELO system
-3. Update ratings based on match outcomes
-4. Analyze changes in player rankings over time
-5. Evaluate the resulting ranking system
+The project uses historical badminton match data organized by discipline:
 
-## Technologies Used
+| File     | Discipline      |
+| -------- | --------------- |
+| `ms.csv` | Men's Singles   |
+| `ws.csv` | Women's Singles |
+| `md.csv` | Men's Doubles   |
+| `wd.csv` | Women's Doubles |
+
+Each dataset contains historical match information, including tournament details, match dates, players, match outcomes, scores, and additional match-level statistics.
+
+The datasets are required to run the complete analysis pipeline.
+
+## Methodology
+
+The project follows the workflow below:
+
+1. **Data Loading and Preprocessing**
+   Historical match records are loaded and cleaned before analysis.
+
+2. **Chronological Processing**
+   Matches are processed sequentially to ensure that ratings are based only on information available before each match.
+
+3. **Dynamic ELO Updates**
+   Player ratings are updated after each match according to match outcomes and the relative strength of competitors.
+
+4. **Ranking Analysis**
+   The evolving ELO ratings are used to construct and analyze player rankings.
+
+5. **Machine Learning Analysis**
+   Engineered ranking and performance features are used for downstream predictive analysis with machine learning models.
+
+6. **Evaluation**
+   Time-aware evaluation methods are used to assess performance while minimizing data leakage.
+
+## Project Structure
+
+```text
+dynamic-elo-ranking-system/
+│
+├── README.md
+├── requirements.txt
+│
+├── notebooks/
+│   └── dynamic_elo_ranking_system.ipynb
+│
+└── data/
+    ├── md.csv
+    ├── ms.csv
+    ├── wd.csv
+    └── ws.csv
+```
+
+## How to Run
+
+### 1. Clone the repository
+
+```bash
+git clone git clone https://github.com/Rushipatel01092003/dynamic-elo-ranking-system.git
+cd dynamic-elo-ranking-system
+```
+
+### 2. Create a virtual environment (recommended)
+
+```bash
+python -m venv venv
+```
+
+Activate the environment.
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+**macOS/Linux:**
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the project
+
+Launch Jupyter Notebook:
+
+```bash
+jupyter notebook
+```
+
+Then open:
+
+```text
+notebooks/dynamic_elo_ranking_system.ipynb
+```
+
+Alternatively, the notebook can be opened directly in JupyterLab or Google Colab.
+
+## Technologies
 
 * Python
 * Pandas
@@ -30,15 +134,16 @@ This project implements a Dynamic ELO-based ranking system for 687 badminton pla
 * Matplotlib
 * Jupyter Notebook
 
-## Repository Structure
+## Reproducibility
 
-```text
-dynamic-elo-ranking-system/
-│
-├── dynamic_elo_ranking_system.ipynb
-└── README.md
-```
+The repository includes the datasets required for the analysis pipeline. To reproduce the project:
 
-## Project
+1. Install the dependencies listed in `requirements.txt`.
+2. Ensure the dataset files remain in the `data/` directory.
+3. Run the notebook sequentially from top to bottom.
 
-The complete implementation, data processing pipeline, and analysis are available in the Jupyter Notebook.
+## Results
+
+The Dynamic ELO framework provides a mechanism for tracking changes in competitive player strength over time and generating rankings from historical match outcomes.
+
+The complete implementation, analysis, visualizations, and experimental workflow are available in the accompanying Jupyter Notebook.
