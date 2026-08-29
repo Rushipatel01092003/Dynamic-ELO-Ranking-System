@@ -66,8 +66,7 @@ dynamic-elo-ranking-system/
 ├── notebooks/
 │   └── dynamic_elo_ranking_system.ipynb
 │
-└── data/
-    ├── md.csv
+└── ├── md.csv
     ├── ms.csv
     ├── wd.csv
     └── ws.csv
@@ -139,8 +138,7 @@ Alternatively, the notebook can be opened directly in JupyterLab or Google Colab
 The repository includes the datasets required for the analysis pipeline. To reproduce the project:
 
 1. Install the dependencies listed in `requirements.txt`.
-2. Ensure the dataset files remain in the `data/` directory.
-3. Run the notebook sequentially from top to bottom.
+2. Run the notebook sequentially from top to bottom.
 
 ## Results
 
